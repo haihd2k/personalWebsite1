@@ -73,6 +73,8 @@ class AdminsController extends Controller
 
         $admin = $this->adminRepository->getById($admin_id);
 
-        return view('admin.admins.admins', ['data' => $allAdmins, 'admin' => $admin]);
+        $adminType = $this->adminTypeRepository->getById($admin_id);
+
+        return view('admin.admins.admins', ['data' => $allAdmins, 'admin' => $admin, 'adminType' => $adminType]);
     }
 }

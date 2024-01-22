@@ -4,6 +4,8 @@ namespace App\Repositories;
 
 use App\Models\AdminType;
 use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
+use Illuminate\Support\Facades\DB;
+
 //use Your Model
 
 /**
@@ -24,5 +26,13 @@ class AdminTypeRepository extends BaseRepository
     {
 
         return AdminType::create($data);
+    }
+
+    public function getById($id, $columns = ['*']){
+
+        return DB::table('admin_type')
+        ->select($columns)
+        ->where('admin_id', $id)
+        ->first();
     }
 }

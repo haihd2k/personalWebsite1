@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AddProductsController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\AdminsController;
 use App\Http\Controllers\Admin\HomeController;
@@ -35,10 +36,13 @@ Route::prefix('/admin')->group(function(){
 
         Route::get('home', [HomeController::class, 'getHome'])->name('admin.home');;
 
-        Route::get('products', [ProductsController::class, 'getProducts']);
-        Route::post('products', [ProductsController::class, 'PostProducts']);
+        Route::get('products', [ProductsController::class, 'getProducts'])->name('admin.products');
+        Route::post('products', [ProductsController::class, 'postProducts']);
 
-        Route::get('product-details/{id}', [ProductsController::class, 'getProducts']);
+        Route::get('add-products', [AddProductsController::class, 'getAddProducts'])->name('admin.add-products');
+        // Route::get('add-products', [AddProductsController::class, 'postAddProducts']);
+
+        Route::get('product-details/{id}', [ProductsController::class, 'getProducts'])->name('admin.product-details');
         // Route::post('products', [ProductsController::class, 'PostProducts']);
 
     });
